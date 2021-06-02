@@ -19,6 +19,7 @@ public class WebConfig implements WebMvcConfigurer {
             .addMapping("/**")
             .allowedMethods("*")
             .allowedOrigins(webClientsUrl)
+            .allowCredentials(true).maxAge(3600)
         ;
     }
 }

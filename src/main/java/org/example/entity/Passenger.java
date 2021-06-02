@@ -7,9 +7,11 @@ import lombok.experimental.Accessors;
 @Getter
 @Setter
 @Accessors(chain = true)
-public class Place {
+public class Passenger {
     private int id;
-    private int total;
-    private int free;
-    private ScheduleItem scheduleItem;
+    private String firstName;
+    private String secondName;
+    private String patronymic;
+    private String docType;
+    private String docNumber;
 }
