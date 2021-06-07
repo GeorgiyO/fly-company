@@ -1,21 +1,11 @@
 package org.example.controller;
 
-import lombok.Getter;
-import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 import org.example.domain.ResponseContainer;
-import org.example.entity.User;
 import org.example.repository.UserRepository;
 import org.example.session.Session;
-import org.springframework.context.annotation.Scope;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.annotation.SessionScope;
-import org.springframework.web.server.WebSession;
-
-import java.util.Map;
-import java.util.function.Consumer;
 
 @RestController
 @Log4j2
@@ -38,12 +28,12 @@ public class LoginController {
         if (u.getPassword().equals(password)) {
             switch (u.getRole().getType()) {
                 case "ADMIN":
-                    session.admin(true);
-                    session.cashier(true);
+                    session.setAdmin(true);
+                    session.setModer(true);
                     return ResponseContainer.of(200, "admin");
-                case "CASHIER":
-                    session.cashier(true);
-                    return ResponseContainer.of(200, "cashier");
+                case "MODER":
+                    session.setModer(true);
+                    return ResponseContainer.of(200, "moder");
             }
         }
         return ResponseContainer.of(400, "incorrect password");
@@ -51,17 +41,16 @@ public class LoginController {
 
     @PostMapping("/logout")
     ResponseEntity<ResponseContainer> logout() {
-        log.info(session.cashier() + " " + session.admin());
-        session.cashier(false);
-        session.admin(false);
+        session.setModer(false);
+        session.setAdmin(false);
         return ResponseContainer.of(200, "succeed");
     }
 
     @GetMapping("/user-role")
     ResponseEntity<ResponseContainer> getUserRole() {
         return ResponseContainer.of(
-            200, session.admin() ? "admin" :
-                 session.cashier() ? "cashier" :
+            200, session.isAdmin() ? "admin" :
+                 session.isModer() ? "moder" :
                  "none"
         );
     }

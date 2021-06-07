@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="flycompany@localhost" uuid="d494d2e5-fa2b-4a07-a291-41931ece272a">
+    <data-source source="LOCAL" name="car_company@localhost" uuid="2e8e7294-e3ab-4566-aa5b-a07282939c97">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/flycompany?serverTimezone=Europe/Moscow</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="fly-company/Hibernate" uuid="4a4e6559-76fb-468e-b421-54d6289c72ce">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>Hibernate</remarks>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/flycompany?serverTimezone=Europe/Moscow</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/car_company?serverTimezone=Europe/Moscow</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

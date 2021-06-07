@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cashiers")
-public class CashierController {
+@RequestMapping("/moder")
+public class ModerController {
 
     final UserRepository repository;
     final Session session;
 
-    public CashierController(UserRepository repository, Session session) {
+    public ModerController(UserRepository repository, Session session) {
         this.repository = repository;
         this.session = session;
     }
@@ -25,13 +25,13 @@ public class CashierController {
     @GetMapping
     @NeedAdminRole
     List<User> all() {
-        return repository.allCashiers();
+        return repository.allModers();
     }
 
     @PostMapping()
     @NeedAdminRole
     User add(@RequestBody User u) {
-        return repository.addCashier(u);
+        return repository.addModer(u);
     }
 
     @GetMapping("/{id}")
@@ -46,7 +46,5 @@ public class CashierController {
         repository.remove(id);
         return ResponseContainer.ok();
     }
-
-
 
 }

@@ -2,14 +2,15 @@ package org.example.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 @Getter
 @Setter
 @Accessors(chain = true)
-public class Place {
+@ToString
+public class Brand {
     private int id;
-    private int total;
-    private int free;
-    private ScheduleItem scheduleItem;
+    private String name;
+    private double sales;
 }

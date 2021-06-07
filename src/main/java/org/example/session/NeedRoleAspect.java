@@ -15,17 +15,17 @@ public class NeedRoleAspect {
         this.session = session;
     }
 
-    @Around("@annotation(NeedCashierRole)")
-    public Object proceedIfCashier(ProceedingJoinPoint joinPoint) throws Throwable {
-        if (session.cashier()) {
+    @Around("@annotation(NeedModerRole)")
+    public Object proceedIfModer(ProceedingJoinPoint joinPoint) throws Throwable {
+        if (session.isModer()) {
             return joinPoint.proceed();
         }
-        throw new NoAccessException("Cashier");
+        throw new NoAccessException("Moder");
     }
 
     @Around("@annotation(NeedAdminRole)")
     public Object proceedIfAdmin(ProceedingJoinPoint joinPoint) throws Throwable {
-        if (session.admin()) {
+        if (session.isAdmin()) {
             return joinPoint.proceed();
         }
         throw new NoAccessException("Admin");

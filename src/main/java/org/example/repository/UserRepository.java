@@ -38,19 +38,19 @@ public class UserRepository {
         return res;
     }
 
-    public List<User> allCashiers() {
+    public List<User> allModers() {
         return jdbc.query(
-            "call cashiers_all()",
+            "call moder_all()",
             mapper
         );
     }
 
-    public User addCashier(User u) {
-        return one("call cashiers_add(?, ?)", u.getLogin(), u.getPassword());
+    public User addModer(User u) {
+        return one("call moder_add(?, ?)", u.getLogin(), u.getPassword());
     }
 
     public void remove(int id) {
-        jdbc.update("call users_remove(?)", id);
+        jdbc.update("call user_delete(?)", id);
     }
 
 }

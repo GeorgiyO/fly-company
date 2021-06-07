@@ -2,12 +2,14 @@ package org.example.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 @Getter
 @Setter
 @Accessors(chain = true)
-public class Plane {
+@ToString
+public class BodyType {
     private int id;
-    private String description;
+    private String type;
 }

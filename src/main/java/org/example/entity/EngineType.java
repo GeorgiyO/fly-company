@@ -9,9 +9,7 @@ import lombok.experimental.Accessors;
 @Setter
 @Accessors(chain = true)
 @ToString
-public class User {
+public class EngineType {
     private int id;
-    private String login;
-    private String password;
-    private Role role;
+    private String type;
 }
