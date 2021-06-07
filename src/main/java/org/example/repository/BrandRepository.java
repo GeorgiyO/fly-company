@@ -4,8 +4,6 @@ import org.example.entity.Brand;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
 public class BrandRepository extends DefaultRepository<Brand> {
     public BrandRepository(JdbcTemplate jdbc) {
@@ -23,10 +21,13 @@ public class BrandRepository extends DefaultRepository<Brand> {
     }
 
     public Brand withSales(int id) {
-        return super.one(
+        return super.jdbc.query(
             "call brand_with_sales(?)",
+            (rs, i) -> new Brand().setId(rs.getInt("id"))
+                                  .setName(rs.getString("name"))
+                                  .setSales(rs.getDouble("sales")),
             id
-        );
+        ).get(0);
     }
 
     public Double salesSum() {

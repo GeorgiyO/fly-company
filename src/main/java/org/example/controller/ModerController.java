@@ -46,5 +46,4 @@ public class ModerController {
         repository.remove(id);
         return ResponseContainer.ok();
     }
-
 }
